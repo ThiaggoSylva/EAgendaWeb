@@ -104,4 +104,52 @@ public class ContatoController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+    [HttpGet]
+    public IActionResult Visualizar(Guid id)
+
+    {
+        var contato = servicoContato.SelecionarPorId(id);
+
+        if (contato is null)
+            return NotFound();
+
+        var viewModel =
+        mapper.Map<VisualizarContatoViewModel>(contato);
+
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    public IActionResult Excluir(Guid id)
+    {
+        var contato = servicoContato.SelecionarPorId(id);
+
+        if (contato is null)
+            return NotFound();
+
+        var viewModel =
+            mapper.Map<ExcluirContatoViewModel>(contato);
+
+        return View(viewModel);
+    }
+    
+    [HttpPost]
+    public IActionResult Excluir(ExcluirContatoViewModel viewModel)
+    {
+    var resultado =
+        servicoContato.Excluir(viewModel.Id);
+
+    if (resultado.IsFailed)
+    {
+        TempData["Erro"] =
+            resultado.Errors.First().Message;
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    TempData["Sucesso"] =
+        "Contato excluído com sucesso.";
+
+    return RedirectToAction(nameof(Index));
+    }
 }

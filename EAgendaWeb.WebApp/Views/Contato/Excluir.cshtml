@@ -1,0 +1,38 @@
+@model EAgendaWeb.WebApp.ModuloContato.Apresentacao.Models.ExcluirContatoViewModel
+
+@{
+    ViewData["Title"] = "Excluir Contato";
+}
+
+<div class="card">
+
+    <div class="card-header bg-danger text-white">
+        <h3>Excluir Contato</h3>
+    </div>
+
+    <div class="card-body">
+
+        <p>
+            Deseja realmente excluir o contato
+            <strong>@Model.Nome</strong>?
+        </p>
+
+        <form method="post">
+
+            <input asp-for="Id" type="hidden"/>
+
+            <button type="submit"
+                    class="btn btn-danger">
+                Confirmar Exclusão
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
