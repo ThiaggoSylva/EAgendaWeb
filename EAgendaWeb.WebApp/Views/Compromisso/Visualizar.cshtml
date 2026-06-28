@@ -1,0 +1,43 @@
+@model EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Models.VisualizarCompromissoViewModel
+
+<div class="card">
+
+    <div class="card-header">
+        <h3>Detalhes do Compromisso</h3>
+    </div>
+
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3">Assunto</dt>
+            <dd class="col-sm-9">@Model.Assunto</dd>
+
+            <dt class="col-sm-3">Data</dt>
+            <dd class="col-sm-9">@Model.DataOcorrencia</dd>
+
+            <dt class="col-sm-3">Hora Início</dt>
+            <dd class="col-sm-9">@Model.HoraInicio</dd>
+
+            <dt class="col-sm-3">Hora Término</dt>
+            <dd class="col-sm-9">@Model.HoraTermino</dd>
+
+            <dt class="col-sm-3">Tipo</dt>
+            <dd class="col-sm-9">@Model.Tipo</dd>
+
+            <dt class="col-sm-3">Local</dt>
+            <dd class="col-sm-9">@Model.Local</dd>
+
+            <dt class="col-sm-3">Link</dt>
+            <dd class="col-sm-9">@Model.Link</dd>
+
+        </dl>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Voltar
+        </a>
+
+    </div>
+
+</div>

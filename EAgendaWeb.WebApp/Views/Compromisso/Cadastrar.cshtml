@@ -1,0 +1,143 @@
+@using EAgendaWeb.WebApp.ModuloCompromisso.Dominio
+
+@model EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Models.CadastrarCompromissoViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar Compromisso";
+}
+
+<div class="card">
+
+    <div class="card-header">
+        <h3>Cadastrar Compromisso</h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="post">
+
+            <div asp-validation-summary="All"
+                 class="text-danger mb-3">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Assunto"></label>
+                <input asp-for="Assunto" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DataOcorrencia"></label>
+                <input asp-for="DataOcorrencia"
+                       type="date"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="HoraInicio"></label>
+                <input asp-for="HoraInicio"
+                       type="time"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="HoraTermino"></label>
+                <input asp-for="HoraTermino"
+                       type="time"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Tipo"></label>
+                <select asp-for="Tipo"
+                        class="form-select"
+                        asp-items="Html.GetEnumSelectList<TipoCompromissoEnum>()">
+                </select>
+            </div>
+
+            <div id="campoLocal" class="mb-3">
+
+                <label asp-for="Local"></label>
+
+                <input asp-for="Local"
+                        class="form-control" />
+
+            </div>
+
+            <div id="campoLink" class="mb-3">
+
+                <label asp-for="Link"></label>
+
+                <input asp-for="Link"
+                        class="form-control" />
+
+            </div>
+
+            <div class="mb-3">
+                <label>Contato</label>
+
+                <select asp-for="ContatoId"
+                        asp-items="Model.ContatosDisponiveis"
+                        class="form-select">
+
+                    <option value="">
+                        Selecione...
+                    </option>
+
+                </select>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Salvar
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Voltar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        function alternarCampos() {
+
+            const tipo =
+                document.getElementById("Tipo").value;
+
+            const local =
+                document.getElementById("campoLocal");
+
+            const link =
+                document.getElementById("campoLink");
+
+            if (tipo == "1") {
+
+                local.style.display = "block";
+                link.style.display = "none";
+
+            }
+            else {
+
+                local.style.display = "none";
+                link.style.display = "block";
+
+            }
+        }
+
+        document
+            .getElementById("Tipo")
+            .addEventListener("change", alternarCampos);
+
+        alternarCampos();
+
+    </script>
+}

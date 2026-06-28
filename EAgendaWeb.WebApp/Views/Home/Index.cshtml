@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Início";
+    ViewData["Title"] = "E-Agenda";
 }
 
 <div class="text-center">
@@ -9,7 +9,61 @@
     </h1>
 
     <p class="lead">
-        Sistema de Gerenciamento de Contatos e Compromissos
+        Sistema de gerenciamento de contatos e compromissos.
     </p>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3>Contatos</h3>
+
+                    <p>
+                        Gerencie todos os contatos cadastrados.
+                    </p>
+
+                    <a asp-controller="Contato"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Acessar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h3>Compromissos</h3>
+
+                    <p>
+                        Gerencie seus compromissos.
+                    </p>
+
+                    <a asp-controller="Compromisso"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Acessar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>

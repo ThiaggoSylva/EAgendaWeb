@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using EAgendaWeb.WebApp.ModuloCompromisso.Dominio;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Models;
 
@@ -27,6 +28,8 @@ public class EditarCompromissoViewModel
     public string? Local { get; set; }
 
     public string? Link { get; set; }
+
+    public List<SelectListItem> ContatosDisponiveis { get; set; } = [];
 
     public Guid? ContatoId { get; set; }
 }
