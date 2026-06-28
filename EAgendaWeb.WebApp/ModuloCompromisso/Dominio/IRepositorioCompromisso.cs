@@ -17,4 +17,6 @@ public interface IRepositorioCompromisso
         DateOnly data,
         TimeOnly inicio,
         TimeOnly termino);
+
+    bool ExisteCompromissoParaContato(Guid contatoId);
 }

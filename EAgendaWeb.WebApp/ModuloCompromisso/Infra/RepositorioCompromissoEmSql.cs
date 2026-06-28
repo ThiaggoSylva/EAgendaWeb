@@ -142,4 +142,21 @@ public class RepositorioCompromissoEmSql : IRepositorioCompromisso
 
         return quantidade > 0;
     }
+
+    public bool ExisteCompromissoParaContato(Guid contatoId)
+    {
+    string sql = """
+        SELECT COUNT(*)
+        FROM TBCompromisso
+        WHERE ContatoId = @ContatoId
+        """;
+
+    using var conexao = connectionFactory.CreateConnection();
+
+    int quantidade = conexao.ExecuteScalar<int>(
+        sql,
+        new { ContatoId = contatoId });
+
+    return quantidade > 0;
+    }
 }

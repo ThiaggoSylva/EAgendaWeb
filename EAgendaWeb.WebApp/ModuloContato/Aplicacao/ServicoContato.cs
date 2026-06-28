@@ -1,17 +1,22 @@
 using FluentResults;
 using EAgendaWeb.WebApp.ModuloContato.Dominio;
+using EAgendaWeb.WebApp.ModuloCompromisso.Dominio;
 
 namespace EAgendaWeb.WebApp.ModuloContato.Aplicacao;
 
 public class ServicoContato
 {
     private readonly IRepositorioContato repositorio;
+
+    private readonly IRepositorioCompromisso repositorioCompromisso;
     private readonly ValidadorContato validador;
 
     public ServicoContato(
-        IRepositorioContato repositorio)
+        IRepositorioContato repositorio,
+        IRepositorioCompromisso repositorioCompromisso)
     {
         this.repositorio = repositorio;
+        this.repositorioCompromisso = repositorioCompromisso;
 
         validador = new ValidadorContato();
     }
@@ -66,14 +71,24 @@ public class ServicoContato
 
     public Result Excluir(Guid id)
     {
-        var contato = repositorio.SelecionarPorId(id);
+    var contato = repositorio.SelecionarPorId(id);
 
-        if (contato is null)
-            return Result.Fail("Contato não encontrado.");
+    if (contato is null)
+        return Result.Fail("Contato não encontrado.");
 
-        repositorio.Excluir(id);
+    bool possuiCompromissos =
+        repositorioCompromisso
+            .ExisteCompromissoParaContato(id);
 
-        return Result.Ok();
+    if (possuiCompromissos)
+    {
+        return Result.Fail(
+            "O contato possui compromissos vinculados e não pode ser excluído.");
+    }
+
+    repositorio.Excluir(id);
+
+    return Result.Ok();
     }
 
     public DetalhesContatoDto? SelecionarPorId(Guid id)
