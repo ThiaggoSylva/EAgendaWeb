@@ -3,6 +3,8 @@ using EAgendaWeb.WebApp.ModuloContato.Dominio;
 using EAgendaWeb.WebApp.ModuloContato.Infra;
 using EAgendaWeb.WebApp.ModuloCompromisso.Dominio;
 using EAgendaWeb.WebApp.ModuloCompromisso.Infra;
+using EAgendaWeb.WebApp.ModuloCategoria.Dominio;
+using EAgendaWeb.WebApp.ModuloCategoria.Infra;
 
 namespace EAgendaWeb.WebApp.Compartilhado.Infra;
 
@@ -18,6 +20,9 @@ public static class InjecaoDependencia
 
         services.AddScoped<IRepositorioCompromisso,
             RepositorioCompromissoEmSql>();
+
+        services.AddScoped<IRepositorioCategoria,
+            RepositorioCategoriaEmSql>();
 
         return services;
     }

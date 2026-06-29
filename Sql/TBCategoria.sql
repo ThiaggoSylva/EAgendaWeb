@@ -1,0 +1,11 @@
+CREATE TABLE TBCategoria
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+
+    Titulo NVARCHAR(100) NOT NULL
+);
+GO
+
+CREATE UNIQUE INDEX IX_TBCategoria_Titulo
+ON TBCategoria(Titulo);
+GO
