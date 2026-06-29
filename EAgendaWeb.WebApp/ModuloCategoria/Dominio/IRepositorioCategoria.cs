@@ -15,4 +15,6 @@ public interface IRepositorioCategoria
     bool ExisteTitulo(string titulo);
 
     bool ExisteTitulo(Guid id, string titulo);
+
+    bool PossuiDespesas(Guid categoriaId);
 }

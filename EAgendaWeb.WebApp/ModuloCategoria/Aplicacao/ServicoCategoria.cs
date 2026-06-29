@@ -75,6 +75,12 @@ public class ServicoCategoria
             return Result.Fail(
                 "Categoria não encontrada.");
 
+        if (repositorio.PossuiDespesas(id))
+        {
+            return Result.Fail(
+                "A categoria possui despesas vinculadas.");
+        }
+
         repositorio.Excluir(id);
 
         return Result.Ok();
