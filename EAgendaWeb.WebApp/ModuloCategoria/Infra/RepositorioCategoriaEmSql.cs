@@ -139,4 +139,21 @@ public class RepositorioCategoriaEmSql : IRepositorioCategoria
 
         return quantidade > 0;
     }
+    public bool PossuiDespesas(Guid categoriaId)
+    {
+    using var conexao =
+        connectionFactory.CreateConnection();
+
+    string sql = """
+        SELECT COUNT(*)
+        FROM TBDespesaCategoria
+        WHERE CategoriaId = @CategoriaId
+        """;
+
+    int quantidade = conexao.ExecuteScalar<int>(
+        sql,
+        new { CategoriaId = categoriaId });
+
+    return quantidade > 0;
+    }
 }
