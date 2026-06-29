@@ -1,0 +1,49 @@
+@model EAgendaWeb.WebApp.ModuloDespesa.Apresentacao.Models.VisualizarDespesaViewModel
+
+@{
+    ViewData["Title"] = "Detalhes da Despesa";
+}
+
+<div class="card">
+
+    <div class="card-header">
+        <h3>Detalhes da Despesa</h3>
+    </div>
+
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3">Descrição</dt>
+            <dd class="col-sm-9">@Model.Descricao</dd>
+
+            <dt class="col-sm-3">Data</dt>
+            <dd class="col-sm-9">
+                @Model.DataOcorrencia.ToString("dd/MM/yyyy")
+            </dd>
+
+            <dt class="col-sm-3">Valor</dt>
+            <dd class="col-sm-9">
+                @Model.Valor.ToString("C")
+            </dd>
+
+            <dt class="col-sm-3">Forma de Pagamento</dt>
+            <dd class="col-sm-9">
+                @Model.FormaPagamento
+            </dd>
+
+            <dt class="col-sm-3">Categorias</dt>
+            <dd class="col-sm-9">
+                @string.Join(", ", Model.Categorias)
+            </dd>
+
+        </dl>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Voltar
+        </a>
+
+    </div>
+
+</div>

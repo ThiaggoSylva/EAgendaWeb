@@ -1,0 +1,89 @@
+@using EAgendaWeb.WebApp.ModuloDespesa.Dominio
+
+@model EAgendaWeb.WebApp.ModuloDespesa.Apresentacao.Models.EditarDespesaViewModel
+
+@{
+    ViewData["Title"] = "Editar Despesa";
+}
+
+<div class="card">
+
+    <div class="card-header">
+        <h3>Editar Despesa</h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="post">
+
+            <input asp-for="Id" type="hidden" />
+
+            <div asp-validation-summary="All"
+                 class="text-danger mb-3">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Descricao" class="form-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DataOcorrencia" class="form-label"></label>
+                <input asp-for="DataOcorrencia"
+                       type="date"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Valor" class="form-label"></label>
+                <input asp-for="Valor"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="FormaPagamento"
+                       class="form-label">
+                </label>
+
+                <select asp-for="FormaPagamento"
+                        asp-items="Html.GetEnumSelectList<FormaPagamentoEnum>()"
+                        class="form-select">
+                </select>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Categorias
+                </label>
+
+                <select asp-for="CategoriasIds"
+                        asp-items="Model.CategoriasDisponiveis"
+                        multiple
+                        class="form-select">
+                </select>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-warning">
+                Salvar Alterações
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Voltar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
