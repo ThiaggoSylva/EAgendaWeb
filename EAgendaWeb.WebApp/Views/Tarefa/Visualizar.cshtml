@@ -1,0 +1,33 @@
+@model EAgendaWeb.WebApp.ModuloTarefa.Apresentacao.Models.VisualizarTarefaViewModel
+
+<h2>Detalhes da Tarefa</h2>
+
+<dl class="row">
+
+    <dt class="col-sm-3">Título</dt>
+    <dd class="col-sm-9">@Model.Titulo</dd>
+
+    <dt class="col-sm-3">Prioridade</dt>
+    <dd class="col-sm-9">@Model.Prioridade</dd>
+
+    <dt class="col-sm-3">Data Criação</dt>
+    <dd class="col-sm-9">
+        @Model.DataCriacao.ToString("dd/MM/yyyy")
+    </dd>
+
+    <dt class="col-sm-3">Data Conclusão</dt>
+    <dd class="col-sm-9">
+        @(Model.DataConclusao?.ToString("dd/MM/yyyy") ?? "-")
+    </dd>
+
+    <dt class="col-sm-3">Progresso</dt>
+    <dd class="col-sm-9">
+        @Model.PercentualConcluido%
+    </dd>
+
+</dl>
+
+<a asp-action="Index"
+   class="btn btn-secondary">
+    Voltar
+</a>

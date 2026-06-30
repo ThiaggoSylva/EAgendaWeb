@@ -1,0 +1,84 @@
+@model EAgendaWeb.WebApp.ModuloTarefa.Apresentacao.Models.GerenciarItensViewModel
+
+<h2>@Model.TituloTarefa</h2>
+
+<div class="mb-4">
+
+    <div class="progress">
+
+        <div class="progress-bar"
+             role="progressbar"
+             style="width:@Model.PercentualConcluido%">
+            @Model.PercentualConcluido%
+        </div>
+
+    </div>
+
+</div>
+
+<form asp-action="AdicionarItem"
+      method="post">
+
+    <input type="hidden"
+           name="TarefaId"
+           value="@Model.TarefaId"/>
+
+    <div class="input-group mb-4">
+
+        <input name="Titulo"
+               class="form-control"
+               placeholder="Novo item"/>
+
+        <button class="btn btn-primary">
+            Adicionar
+        </button>
+
+    </div>
+
+</form>
+
+<table class="table">
+
+    <tbody>
+
+    @foreach (var item in Model.Itens)
+    {
+        <tr>
+
+            <td>
+
+                @if (item.Concluido)
+                {
+                    <s>@item.Titulo</s>
+                }
+                else
+                {
+                    @item.Titulo
+                }
+
+            </td>
+
+            <td width="250">
+
+                <a asp-action="ConcluirItem"
+                   asp-route-itemId="@item.Id"
+                   asp-route-tarefaId="@Model.TarefaId"
+                   class="btn btn-success btn-sm">
+                    Concluir
+                </a>
+
+                <a asp-action="RemoverItem"
+                   asp-route-itemId="@item.Id"
+                   asp-route-tarefaId="@Model.TarefaId"
+                   class="btn btn-danger btn-sm">
+                    Remover
+                </a>
+
+            </td>
+
+        </tr>
+    }
+
+    </tbody>
+
+</table>

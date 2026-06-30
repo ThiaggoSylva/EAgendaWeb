@@ -1,0 +1,30 @@
+@model EAgendaWeb.WebApp.ModuloTarefa.Apresentacao.Models.ExcluirTarefaViewModel
+
+<h2>Excluir Tarefa</h2>
+
+<form method="post">
+
+    <input asp-for="Id" type="hidden"/>
+
+    <p>
+
+        Deseja realmente excluir a tarefa
+
+        <strong>
+            @Model.Titulo
+        </strong>
+
+        ?
+
+    </p>
+
+    <button class="btn btn-danger">
+        Confirmar
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>

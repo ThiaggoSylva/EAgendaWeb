@@ -157,4 +157,79 @@ public class TarefaController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet]
+    public IActionResult GerenciarItens(Guid id)
+    {
+        var tarefa = servicoTarefa.SelecionarPorId(id);
+
+        if (tarefa is null)
+            return NotFound();
+
+        var itens =
+        servicoItem.SelecionarItens(id);
+
+        var viewModel =
+        new GerenciarItensViewModel
+        {
+            TarefaId = id,
+            TituloTarefa = tarefa.Titulo,
+            PercentualConcluido = tarefa.PercentualConcluido,
+
+            Itens = itens.Select(i =>
+                new ItemTarefaViewModel
+                {
+                    Id = i.Id,
+                    Titulo = i.Titulo,
+                    Concluido = i.Concluido
+                }).ToList()
+        };
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult AdicionarItem(
+        Guid tarefaId,
+        string titulo)
+    {
+        var dto =
+        new InserirItemTarefaDto(
+            tarefaId,
+            titulo);
+
+        servicoItem.AdicionarItem(dto);
+
+        return RedirectToAction(
+        nameof(GerenciarItens),
+        new { id = tarefaId });
+    }
+
+    [HttpGet]
+    public IActionResult ConcluirItem(
+        Guid itemId,
+        Guid tarefaId)
+    {
+        servicoItem.ConcluirItem(
+        itemId,
+        tarefaId);
+
+        return RedirectToAction(
+        nameof(GerenciarItens),
+        new { id = tarefaId });
+    }
+
+    [HttpGet]
+    public IActionResult RemoverItem(
+        Guid itemId,
+        Guid tarefaId)
+    {
+        servicoItem.RemoverItem(
+        itemId,
+        tarefaId);
+
+        return RedirectToAction(
+        nameof(GerenciarItens),
+        new { id = tarefaId });
+    }
 }

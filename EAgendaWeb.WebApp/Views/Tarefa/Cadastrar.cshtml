@@ -1,0 +1,42 @@
+@using EAgendaWeb.WebApp.ModuloTarefa.Dominio
+
+@model EAgendaWeb.WebApp.ModuloTarefa.Apresentacao.Models.CadastrarTarefaViewModel
+
+<h2>Cadastrar Tarefa</h2>
+
+<form method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger">
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="Titulo"></label>
+
+        <input asp-for="Titulo"
+               class="form-control"/>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="Prioridade"></label>
+
+        <select asp-for="Prioridade"
+                asp-items="Html.GetEnumSelectList<PrioridadeTarefaEnum>()"
+                class="form-select">
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+        Salvar
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Voltar
+    </a>
+
+</form>
