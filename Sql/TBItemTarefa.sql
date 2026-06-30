@@ -1,0 +1,15 @@
+CREATE TABLE TBItemTarefa
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+
+    Titulo NVARCHAR(100) NOT NULL,
+
+    Concluido BIT NOT NULL,
+
+    TarefaId UNIQUEIDENTIFIER NOT NULL,
+
+    CONSTRAINT FK_TBItemTarefa_Tarefa
+        FOREIGN KEY (TarefaId)
+        REFERENCES TBTarefa(Id)
+);
+GO
