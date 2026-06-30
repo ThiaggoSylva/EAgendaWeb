@@ -1,0 +1,160 @@
+using AutoMapper;
+
+using Microsoft.AspNetCore.Mvc;
+
+using EAgendaWeb.WebApp.ModuloTarefa.Aplicacao;
+using EAgendaWeb.WebApp.ModuloTarefa.Apresentacao.Models;
+
+namespace EAgendaWeb.WebApp.ModuloTarefa.Apresentacao.Controllers;
+
+public class TarefaController : Controller
+{
+    private readonly ServicoTarefa servicoTarefa;
+    private readonly ServicoItemTarefa servicoItem;
+    private readonly IMapper mapper;
+
+    public TarefaController(
+        ServicoTarefa servicoTarefa,
+        ServicoItemTarefa servicoItem,
+        IMapper mapper)
+    {
+        this.servicoTarefa = servicoTarefa;
+        this.servicoItem = servicoItem;
+        this.mapper = mapper;
+    }
+
+    public IActionResult Index()
+    {
+        var tarefas = servicoTarefa.SelecionarTodos();
+
+        return View(tarefas);
+    }
+
+    public IActionResult Pendentes()
+    {
+        var tarefas =
+            servicoTarefa.SelecionarPendentes();
+
+        return View("Index", tarefas);
+    }
+
+    public IActionResult Concluidas()
+    {
+        var tarefas =
+            servicoTarefa.SelecionarConcluidas();
+
+        return View("Index", tarefas);
+    }
+
+    [HttpGet]
+    public IActionResult Cadastrar()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Cadastrar(
+        CadastrarTarefaViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+            return View(viewModel);
+
+        var dto =
+            mapper.Map<InserirTarefaDto>(viewModel);
+
+        var resultado =
+            servicoTarefa.Cadastrar(dto);
+
+        if (resultado.IsFailed)
+        {
+            foreach (var erro in resultado.Errors)
+                ModelState.AddModelError(
+                    string.Empty,
+                    erro.Message);
+
+            return View(viewModel);
+        }
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
+    public IActionResult Editar(Guid id)
+    {
+        var tarefa =
+            servicoTarefa.SelecionarPorId(id);
+
+        if (tarefa is null)
+            return NotFound();
+
+        var viewModel =
+            mapper.Map<EditarTarefaViewModel>(tarefa);
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult Editar(
+        EditarTarefaViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+            return View(viewModel);
+
+        var dto =
+            mapper.Map<EditarTarefaDto>(viewModel);
+
+        var resultado =
+            servicoTarefa.Editar(dto);
+
+        if (resultado.IsFailed)
+        {
+            foreach (var erro in resultado.Errors)
+                ModelState.AddModelError(
+                    string.Empty,
+                    erro.Message);
+
+            return View(viewModel);
+        }
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
+    public IActionResult Visualizar(Guid id)
+    {
+        var tarefa =
+            servicoTarefa.SelecionarPorId(id);
+
+        if (tarefa is null)
+            return NotFound();
+
+        var viewModel =
+            mapper.Map<VisualizarTarefaViewModel>(tarefa);
+
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    public IActionResult Excluir(Guid id)
+    {
+        var tarefa =
+            servicoTarefa.SelecionarPorId(id);
+
+        if (tarefa is null)
+            return NotFound();
+
+        var viewModel =
+            mapper.Map<ExcluirTarefaViewModel>(tarefa);
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult Excluir(
+        ExcluirTarefaViewModel viewModel)
+    {
+        servicoTarefa.Excluir(viewModel.Id);
+
+        return RedirectToAction(nameof(Index));
+    }
+}

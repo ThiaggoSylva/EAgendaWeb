@@ -122,4 +122,19 @@ public class ServicoTarefa
             tarefa.Concluida
         );
     }
+
+    public List<ListarTarefaDto> SelecionarPorPrioridade(
+    PrioridadeTarefaEnum prioridade)
+    {
+        return repositorio
+        .SelecionarTodos()
+        .Where(x => x.Prioridade == prioridade)
+        .Select(t => new ListarTarefaDto(
+            t.Id,
+            t.Titulo,
+            t.Prioridade,
+            t.PercentualConcluido,
+            t.Concluida))
+        .ToList();
+    }
 }

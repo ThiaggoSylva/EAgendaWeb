@@ -80,4 +80,10 @@ public class ServicoItemTarefa
 
         repositorioTarefa.Editar(tarefa);
     }
+
+    public List<ItemTarefa> SelecionarItens(Guid tarefaId)
+    {
+        return repositorioItem
+        .SelecionarPorTarefa(tarefaId);
+    }
 }
