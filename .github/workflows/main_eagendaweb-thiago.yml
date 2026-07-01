@@ -30,22 +30,16 @@ jobs:
           pwd
           ls -R
       - name: Build 
-        run: EAgendaWeb.WebApp/EAgendaWeb.WebApp.csproj --configuration Release
+        run: dotnet build EAgendaWeb.WebApp/EAgendaWeb.WebApp.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish EAgendaWeb.WebApp/EAgendaWeb.WebApp.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-
-      - name: Upload database artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: database-dacpac
-          path: eagendaweb-thiago.Database/bin/Release/eagendaweb-thiago.Database.dacpac
 
   deploy:
     runs-on: windows-latest
@@ -56,21 +50,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-
-      
-      - name: Download database artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: database-dacpac
-          path: database
-
-      - name: Deploy database schema
-        uses: azure/sql-action@v2
-        with:
-          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          path: database/eagendaweb-thiago.Database.dacpac
-          action: Publish
-          arguments: /p:BlockOnPossibleDataLoss=true
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
