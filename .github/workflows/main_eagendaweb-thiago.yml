@@ -32,9 +32,6 @@ jobs:
       - name: Build 
         run: EAgendaWeb.WebApp/EAgendaWeb.WebApp.csproj --configuration Release
 
-      - name: Build
-        run: dotnet build eagendaweb-thiago.sln --configuration Release
-
       - name: dotnet publish
         run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
