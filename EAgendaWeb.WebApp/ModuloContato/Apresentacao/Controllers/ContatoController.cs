@@ -21,7 +21,16 @@ public class ContatoController : Controller
 
     public IActionResult Index()
     {
-    return Content("Contato funcionando");
+    try
+    {
+        var contatos = servicoContato.SelecionarTodos();
+
+        return Content($"Encontrados {contatos.Count()} contatos");
+    }
+    catch (Exception ex)
+    {
+        return Content(ex.ToString());
+    }
     }
 
     [HttpGet]
