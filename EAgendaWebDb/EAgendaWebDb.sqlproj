@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Name>EAgendaWebDb</Name>
     <ProjectGuid>{14008830-E95E-4BC7-852B-8BEB8B6E2CC2}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CI</ModelCollation>
   </PropertyGroup>
   <Target Name="BeforeBuild">
