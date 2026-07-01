@@ -14,3 +14,36 @@
 2026-07-01 09:54:59.416 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/ - 200 null text/html; charset=utf-8 3400.3457ms
 2026-07-01 09:55:00.050 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - null null
 2026-07-01 09:55:00.055 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - 200 14879 application/javascript; charset=utf-8 6.589ms
+2026-07-01 20:07:44.809 -03:00 [INF] User profile is available. Using 'C:\Users\thiag\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-01 20:07:45.107 -03:00 [WRN] The WebRootPath was not found: C:\Users\thiag\Documents\Academia 2026\e-Agenda-Web\EAgendaWeb.WebApp\wwwroot. Static files may be unavailable.
+2026-07-01 20:07:45.215 -03:00 [INF] Now listening on: http://localhost:5057
+2026-07-01 20:07:45.217 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-01 20:07:45.218 -03:00 [INF] Hosting environment: Development
+2026-07-01 20:07:45.218 -03:00 [INF] Content root path: C:\Users\thiag\Documents\Academia 2026\e-Agenda-Web\EAgendaWeb.WebApp
+2026-07-01 20:07:47.574 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/ - null null
+2026-07-01 20:07:48.873 -03:00 [INF] Executing endpoint 'EAgendaWeb.WebApp.Controllers.HomeController.Index (EAgendaWeb.WebApp)'
+2026-07-01 20:07:49.761 -03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EAgendaWeb.WebApp.Controllers.HomeController (EAgendaWeb.WebApp).
+2026-07-01 20:07:50.164 -03:00 [INF] Executing ViewResult, running view Index.
+2026-07-01 20:07:50.830 -03:00 [INF] Executed ViewResult - view Index executed in 874.6614ms.
+2026-07-01 20:07:50.853 -03:00 [INF] Executed action EAgendaWeb.WebApp.Controllers.HomeController.Index (EAgendaWeb.WebApp) in 945.417ms
+2026-07-01 20:07:50.853 -03:00 [INF] Executed endpoint 'EAgendaWeb.WebApp.Controllers.HomeController.Index (EAgendaWeb.WebApp)'
+2026-07-01 20:07:50.866 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/ - 200 null text/html; charset=utf-8 3596.1746ms
+2026-07-01 20:07:51.363 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-01 20:07:51.368 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - 200 14879 application/javascript; charset=utf-8 6.3168ms
+2026-07-01 20:45:46.481 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/Compromisso - null null
+2026-07-01 20:45:46.572 -03:00 [INF] Executing endpoint 'EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Controllers.CompromissoController.Index (EAgendaWeb.WebApp)'
+2026-07-01 20:45:46.663 -03:00 [INF] Route matched with {action = "Index", controller = "Compromisso"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Controllers.CompromissoController (EAgendaWeb.WebApp).
+2026-07-01 20:45:49.641 -03:00 [INF] Executing ViewResult, running view Index.
+2026-07-01 20:45:49.705 -03:00 [INF] Executed ViewResult - view Index executed in 76.089ms.
+2026-07-01 20:45:49.707 -03:00 [INF] Executed action EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Controllers.CompromissoController.Index (EAgendaWeb.WebApp) in 3043.5569ms
+2026-07-01 20:45:49.708 -03:00 [INF] Executed endpoint 'EAgendaWeb.WebApp.ModuloCompromisso.Apresentacao.Controllers.CompromissoController.Index (EAgendaWeb.WebApp)'
+2026-07-01 20:45:49.714 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/Compromisso - 200 null text/html; charset=utf-8 3235.7194ms
+2026-07-01 20:45:49.833 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-01 20:45:49.843 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - 200 14879 application/javascript; charset=utf-8 9.164ms
+2026-07-01 20:46:34.181 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/Contato - null null
+2026-07-01 20:46:34.199 -03:00 [INF] Executing endpoint 'EAgendaWeb.WebApp.ModuloContato.Apresentacao.Controllers.ContatoController.Index (EAgendaWeb.WebApp)'
+2026-07-01 20:46:34.202 -03:00 [INF] Route matched with {action = "Index", controller = "Contato"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EAgendaWeb.WebApp.ModuloContato.Apresentacao.Controllers.ContatoController (EAgendaWeb.WebApp).
+2026-07-01 20:46:34.278 -03:00 [INF] Executing ContentResult with HTTP Response ContentType of text/plain; charset=utf-8
+2026-07-01 20:46:34.286 -03:00 [INF] Executed action EAgendaWeb.WebApp.ModuloContato.Apresentacao.Controllers.ContatoController.Index (EAgendaWeb.WebApp) in 84.1289ms
+2026-07-01 20:46:34.286 -03:00 [INF] Executed endpoint 'EAgendaWeb.WebApp.ModuloContato.Apresentacao.Controllers.ContatoController.Index (EAgendaWeb.WebApp)'
+2026-07-01 20:46:34.286 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/Contato - 200 22 text/plain; charset=utf-8 105.2933ms
