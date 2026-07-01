@@ -23,8 +23,14 @@ jobs:
         with:
           dotnet-version: '10.x'
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+          
+          
+      - name: Listar arquivos
+        run: |
+          pwd
+          ls -R
+      - name: Build 
+        run: EAgendaWeb.WebApp/EAgendaWeb.WebApp.csproj --configuration Release
 
       - name: Build
         run: dotnet build eagendaweb-thiago.sln --configuration Release
