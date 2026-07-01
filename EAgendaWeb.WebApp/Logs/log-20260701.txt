@@ -1,0 +1,16 @@
+2026-07-01 09:54:52.026 -03:00 [INF] User profile is available. Using 'C:\Users\thiag\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-01 09:54:52.569 -03:00 [WRN] The WebRootPath was not found: C:\Users\thiag\Documents\Academia 2026\e-Agenda-Web\EAgendaWeb.WebApp\wwwroot. Static files may be unavailable.
+2026-07-01 09:54:53.024 -03:00 [INF] Now listening on: http://localhost:5057
+2026-07-01 09:54:53.030 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-01 09:54:53.031 -03:00 [INF] Hosting environment: Development
+2026-07-01 09:54:53.031 -03:00 [INF] Content root path: C:\Users\thiag\Documents\Academia 2026\e-Agenda-Web\EAgendaWeb.WebApp
+2026-07-01 09:54:56.021 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/ - null null
+2026-07-01 09:54:56.874 -03:00 [INF] Executing endpoint 'EAgendaWeb.WebApp.Controllers.HomeController.Index (EAgendaWeb.WebApp)'
+2026-07-01 09:54:57.292 -03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller EAgendaWeb.WebApp.Controllers.HomeController (EAgendaWeb.WebApp).
+2026-07-01 09:54:57.522 -03:00 [INF] Executing ViewResult, running view Index.
+2026-07-01 09:54:58.990 -03:00 [INF] Executed ViewResult - view Index executed in 1616.5832ms.
+2026-07-01 09:54:59.008 -03:00 [INF] Executed action EAgendaWeb.WebApp.Controllers.HomeController.Index (EAgendaWeb.WebApp) in 1706.0982ms
+2026-07-01 09:54:59.008 -03:00 [INF] Executed endpoint 'EAgendaWeb.WebApp.Controllers.HomeController.Index (EAgendaWeb.WebApp)'
+2026-07-01 09:54:59.416 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/ - 200 null text/html; charset=utf-8 3400.3457ms
+2026-07-01 09:55:00.050 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-01 09:55:00.055 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5057/_framework/aspnetcore-browser-refresh.js - 200 14879 application/javascript; charset=utf-8 6.589ms
