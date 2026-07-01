@@ -26,8 +26,8 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: Build database project
-        run: dotnet build EAgendaWeb.Database\EAgendaWeb.Database.csproj --configuration Release
+      - name: Build
+        run: dotnet build eagendaweb-thiago.sln --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
