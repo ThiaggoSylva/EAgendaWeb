@@ -33,30 +33,24 @@ public class ContatoController : Controller
     }
 
     [HttpPost]
-    public IActionResult Cadastrar(
-        CadastrarContatoViewModel viewModel)
+    public IActionResult Cadastrar(CadastrarContatoViewModel viewModel)
     {
         if (!ModelState.IsValid)
             return View(viewModel);
 
-        var dto =
-            mapper.Map<InserirContatoDto>(viewModel);
+        var dto = mapper.Map<InserirContatoDto>(viewModel);
 
-        var resultado =
-            servicoContato.Cadastrar(dto);
+        var resultado = servicoContato.Cadastrar(dto);
 
         if (resultado.IsFailed)
         {
             foreach (var erro in resultado.Errors)
-                ModelState.AddModelError(
-                    string.Empty,
-                    erro.Message);
+                ModelState.AddModelError(string.Empty, erro.Message);
 
             return View(viewModel);
         }
 
-        TempData["Sucesso"] =
-            "Contato cadastrado com sucesso.";
+        TempData["Sucesso"] = "Contato cadastrado com sucesso.";
 
         return RedirectToAction(nameof(Index));
     }
@@ -64,57 +58,48 @@ public class ContatoController : Controller
     [HttpGet]
     public IActionResult Editar(Guid id)
     {
-        var contato =
-            servicoContato.SelecionarPorId(id);
+        var contato = servicoContato.SelecionarPorId(id);
 
         if (contato is null)
             return NotFound();
 
-        var viewModel =
-            mapper.Map<EditarContatoViewModel>(contato);
+        var viewModel = mapper.Map<EditarContatoViewModel>(contato);
 
         return View(viewModel);
     }
 
     [HttpPost]
-    public IActionResult Editar(
-        EditarContatoViewModel viewModel)
+    public IActionResult Editar(EditarContatoViewModel viewModel)
     {
         if (!ModelState.IsValid)
             return View(viewModel);
 
-        var dto =
-            mapper.Map<EditarContatoDto>(viewModel);
+        var dto = mapper.Map<EditarContatoDto>(viewModel);
 
-        var resultado =
-            servicoContato.Editar(dto);
+        var resultado = servicoContato.Editar(dto);
 
         if (resultado.IsFailed)
         {
             foreach (var erro in resultado.Errors)
-                ModelState.AddModelError(
-                    string.Empty,
-                    erro.Message);
+                ModelState.AddModelError(string.Empty, erro.Message);
 
             return View(viewModel);
         }
 
-        TempData["Sucesso"] =
-            "Contato atualizado com sucesso.";
+        TempData["Sucesso"] = "Contato atualizado com sucesso.";
 
         return RedirectToAction(nameof(Index));
     }
+
     [HttpGet]
     public IActionResult Visualizar(Guid id)
-
     {
         var contato = servicoContato.SelecionarPorId(id);
 
         if (contato is null)
             return NotFound();
 
-        var viewModel =
-        mapper.Map<VisualizarContatoViewModel>(contato);
+        var viewModel = mapper.Map<VisualizarContatoViewModel>(contato);
 
         return View(viewModel);
     }
@@ -127,29 +112,26 @@ public class ContatoController : Controller
         if (contato is null)
             return NotFound();
 
-        var viewModel =
-            mapper.Map<ExcluirContatoViewModel>(contato);
+        var viewModel = mapper.Map<ExcluirContatoViewModel>(contato);
 
         return View(viewModel);
     }
-    
+
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Excluir(ExcluirContatoViewModel viewModel)
     {
-    var resultado =
-        servicoContato.Excluir(viewModel.Id);
+        var resultado = servicoContato.Excluir(viewModel.Id);
 
-    if (resultado.IsFailed)
-    {
-        TempData["Erro"] =
-            resultado.Errors.First().Message;
+        if (resultado.IsFailed)
+        {
+            TempData["Erro"] = resultado.Errors.First().Message;
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        TempData["Sucesso"] = "Contato excluído com sucesso.";
 
         return RedirectToAction(nameof(Index));
-    }
-
-    TempData["Sucesso"] =
-        "Contato excluído com sucesso.";
-
-    return RedirectToAction(nameof(Index));
     }
 }
